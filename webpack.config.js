@@ -33,6 +33,8 @@ Encore
 
     .disableSingleRuntimeChunk()
 
+    .enableReactPreset()
+
 ;
 
 

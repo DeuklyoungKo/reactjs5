@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class RepLogList extends Component {
     render() {
-        const { highlightedRowId } = this.props
+        const { highlightedRowId, onRowClick } = this.props;
 
 
         const repLogs = [
@@ -19,7 +19,7 @@ export default class RepLogList extends Component {
                     className={highlightedRowId === repLog.id ? 'info' : ''}
                     // onClick={() => console.log("OMG - an onClick!!")}
                     // onClick={(event) => this.setState({highlightedRowId: repLog.id})}
-                    onClick={(event) => this.handleRowClick(repLog.id, event)}
+                    onClick={() => onRowClick(repLog.id)}
                 >
                     <td>{repLog.itemLabel}</td>
                     <td>{repLog.reps}</td>

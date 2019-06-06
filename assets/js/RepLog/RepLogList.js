@@ -17,8 +17,6 @@ export default function RepLogList(props) {
             <tr
                 key={repLog.id}
                 className={highlightedRowId === repLog.id ? 'info' : ''}
-                // onClick={() => console.log("OMG - an onClick!!")}
-                // onClick={(event) => this.setState({highlightedRowId: repLog.id})}
                 onClick={() => onRowClick(repLog.id)}
             >
                 <td>{repLog.itemLabel}</td>

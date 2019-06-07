@@ -27,9 +27,11 @@ export default class RepLogCreator extends Component {
         const quantityInput = this.quantityInput.current;
         const itemSelect = this.itemSelect.current;
 
-        // console.log(event.target.elements.namedItem('reps').value);
-        // console.log(quantityInput.value);
-        // console.log(itemSelect.options[itemSelect.selectedIndex].value);
+        if (quantityInput.value <= 0) {
+            // TODO - print some validation error!
+
+            return;
+        }
 
         onAddRepLog(
             itemSelect.options[itemSelect.selectedIndex].text,

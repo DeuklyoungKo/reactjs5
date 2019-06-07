@@ -1,6 +1,6 @@
 import React from 'react';
-import RepLogList from "./RepLogList";
 import PropTypes from 'prop-types';
+import RepLogList from "./RepLogList";
 import RepLogCreator from './RepLogCreator';
 
 const calculateTotalWeightFancier =
@@ -18,8 +18,6 @@ export default function RepLogs(props) {
     }
 
 
-    
-    
     return (
         <div className="col-md-7">
             <h2>Lift History! {heart}</h2>

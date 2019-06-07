@@ -13,7 +13,7 @@ export default class RepLogCreator extends Component {
         event.preventDefault();
 
         const {onNewItemSubmit} = this.props;
-        console.log('I love when a good form submits!');
+        console.log('I love when a good form submits!11');
         console.log(event.target.elements.namedItem('reps').value);
 
         onNewItemSubmit('Big Fat Cat', event.target.elements.namedItem('reps').value);

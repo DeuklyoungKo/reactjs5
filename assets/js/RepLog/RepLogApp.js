@@ -18,7 +18,7 @@ export default class RepLogApp extends Component {
         };
 
         this.handleRowClick = this.handleRowClick.bind(this);
-        this.handleNewItemSubmit = this.handleNewItemSubmit.bind(this);
+        this.handleAddRepLog = this.handleAddRepLog.bind(this);
 
     }
 
@@ -26,7 +26,7 @@ export default class RepLogApp extends Component {
         this.setState({highlightedRowId: repLogId})
     }
 
-    handleNewItemSubmit(itemLabel, reps) {
+    handleAddRepLog(itemLabel, reps) {
         const repLogs = this.state.repLogs;
         const newRep = {
             id: uuid(),
@@ -35,8 +35,17 @@ export default class RepLogApp extends Component {
             totalWeightLifted: Math.floor(Math.random()*50)
         }
 
-        repLogs.push(newRep);
-        this.setState({repLogs: repLogs});
+        // repLogs.push(newRep);
+        // this.setState({repLogs: repLogs});
+
+        // const newRepLogs = [...this.state.repLogs, newRep];
+        // this.setState({repLogs: newRepLogs});
+
+        this.setState(prevState => {
+            const newRepLogs = [...prevState.repLogs, newRep];
+
+            return {repLogs: newRepLogs};
+        })
 
     }
 
@@ -47,7 +56,7 @@ export default class RepLogApp extends Component {
                 {...this.props}
                 {...this.state}
                 onRowClick={this.handleRowClick}
-                onNewItemSubmit={this.handleNewItemSubmit}
+                onAddRepLog={this.handleAddRepLog}
             />
 
         )

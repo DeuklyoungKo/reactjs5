@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RepLogList from "./RepLogList";
 import RepLogCreator from './RepLogCreator';
+// import RepLogCreator from './RepLogCreatorControlledComponents';
 
 const calculateTotalWeightFancier =
         repLogs => repLogs.reduce(

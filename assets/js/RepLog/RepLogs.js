@@ -19,7 +19,8 @@ export default function RepLogs(props) {
         onAddRepLog,
         numberOfHearts,
         onHeartChange,
-        onDeleteRepLog
+        onDeleteRepLog,
+        isLoaded
     } = props;
 
     const heartsStyle = {
@@ -28,8 +29,6 @@ export default function RepLogs(props) {
 
     let heart = '';
     if (withHeart) {
-
-
         // heart = <span style={heartsStyle}>&hearts;</span>
         heart = <span style={heartsStyle}>{'♥'.repeat(numberOfHearts)}</span>;
     }
@@ -61,6 +60,7 @@ export default function RepLogs(props) {
                     onRowClick={onRowClick}
                     repLogs={repLogs}
                     onDeleteRepLog={onDeleteRepLog}
+                    isLoaded={isLoaded}
                 />
                 <tfoot>
                 <tr>
@@ -93,5 +93,6 @@ RepLogs.propTypes = {
     repLogs: PropTypes.array.isRequired,
     numberOfHearts: PropTypes.number.isRequired,
     onHeartChange: PropTypes.func.isRequired,
+    isLoaded: PropTypes.bool.isRequired,
 
 };

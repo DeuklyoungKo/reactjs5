@@ -10,13 +10,15 @@
     "font-awesome": "4",
     "jquery": "^3.3.1",
     "node-sass": "^4.7.2",
+    "promise-polyfill": "^8.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "sass-loader": "^7.1.0",
     "sweetalert2": "^7.11.0",
     "uuid": "^3.3.2",
-    "webpack-notifier": "^1.5.1"
+    "webpack-notifier": "^1.5.1",
+    "whatwg-fetch": "^3.0.0"
   },
   "scripts": {
     "dev-server": "encore dev-server --public http://reactjs.test.com:8080 --host 0.0.0.0  --disable-host-check",

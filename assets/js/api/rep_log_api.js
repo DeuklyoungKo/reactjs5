@@ -3,8 +3,9 @@ function fetchJson(url, options) {
         credentials: 'same-origin'
     }, options))
         .then(response => {
-            return response.json();
-        });
+            return response.json()
+        })
+
 }
 
 

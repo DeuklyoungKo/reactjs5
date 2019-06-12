@@ -4,13 +4,15 @@ import RepLogList from "./RepLogList";
 import RepLogCreator from './RepLogCreator';
 // import RepLogCreator from './RepLogCreatorControlledComponents';
 
+
 const calculateTotalWeightFancier =
-        repLogs => repLogs.reduce(
-            (total, log) => total + log.totalWeightLifted, 0
-        );
+    repLogs => repLogs.reduce(
+        (total, log) => total + log.totalWeightLifted, 0
+    );
 
 
 export default function RepLogs(props) {
+
     const {
         withHeart,
         highlightedRowId,
@@ -20,7 +22,9 @@ export default function RepLogs(props) {
         numberOfHearts,
         onHeartChange,
         onDeleteRepLog,
-        isLoaded
+        isLoaded,
+        isSavingNewRepLog,
+        successMessage
     } = props;
 
     const heartsStyle = {
@@ -45,7 +49,11 @@ export default function RepLogs(props) {
                     onHeartChange(+e.target.value)
                 }}
             />
-
+            { successMessage && (
+                <div className="alert alert-success text-center">
+                    {successMessage}
+                </div>
+            )}
             <table className="table table-striped">
                 <thead>
                 <tr>
@@ -61,6 +69,7 @@ export default function RepLogs(props) {
                     repLogs={repLogs}
                     onDeleteRepLog={onDeleteRepLog}
                     isLoaded={isLoaded}
+                    isSavingNewRepLog={isSavingNewRepLog}
                 />
                 <tfoot>
                 <tr>
@@ -94,5 +103,7 @@ RepLogs.propTypes = {
     numberOfHearts: PropTypes.number.isRequired,
     onHeartChange: PropTypes.func.isRequired,
     isLoaded: PropTypes.bool.isRequired,
+    isSavingNewRepLog: PropTypes.bool.isRequired,
+    successMessage: PropTypes.string.isRequired,
 
 };

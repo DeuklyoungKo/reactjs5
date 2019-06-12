@@ -14,6 +14,8 @@ export default class RepLogApp extends Component {
             repLogs: [],
             numberOfHearts: 1,
             isLoaded: false,
+            isSavingNewRepLog: false,
+            successMessage: '',
         };
 
         this.handleRowClick = this.handleRowClick.bind(this);
@@ -41,29 +43,28 @@ export default class RepLogApp extends Component {
     }
 
     handleAddRepLog(item, reps) {
-        const repLogs = this.state.repLogs;
+        // const repLogs = this.state.repLogs;
         const newRep = {
-            // id: uuid(),
             reps: reps,
             item: item,
-            // totalWeightLifted: Math.floor(Math.random()*50)
         }
+
+        this.setState({
+            isSavingNewRepLog: true
+        });
 
         createRepLog(newRep)
             .then(repLog => {
                 this.setState(prevState => {
                     const newRepLogs = [...prevState.repLogs, repLog];
 
-                    return {repLogs: newRepLogs};
+                    return {
+                        repLogs: newRepLogs,
+                        isSavingNewRepLog: false,
+                        successMessage: 'Rep Log Saved!'
+                    };
                 })
             })
-
-        // this.setState(prevState => {
-        //     const newRepLogs = [...prevState.repLogs, newRep];
-        //
-        //     return {repLogs: newRepLogs};
-        // })
-
     }
 
     handleHeartChange(heartCount) {

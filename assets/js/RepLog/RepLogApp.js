@@ -99,15 +99,36 @@ export default class RepLogApp extends Component {
     }
 
     handleDeleteRepLog(id) {
-        deleteRepLog(id);
 
-        // remove the repo log without mutating state
-        // filter returns a new array
         this.setState((prevState) => {
             return {
-                repLogs: prevState.repLogs.filter(repLog => repLog.id !== id)
+                repLogs: prevState.repLogs.map(repLog => {
+                    if (repLog.id !== id) {
+                        // console.log(repLog);
+                        return repLog;
+                    }
+
+                    // console.log(Object.assign({}, repLog, {isDeleting: true}));
+                    return Object.assign({}, repLog, {isDeleting: true});
+                })
             }
-        })
+
+        });
+
+        // return;
+
+        deleteRepLog(id)
+            .then(() => {
+                // remove the repo log without mutating state
+                // filter returns a new array
+                this.setState((prevState) => {
+                    return {
+                        repLogs: prevState.repLogs.filter(repLog => repLog.id !== id)
+                    }
+                })
+
+                this.setSuccessMessage('Item was Un-lifted!');
+            })
     }
 
 

@@ -115,7 +115,9 @@ export default class RepLogApp extends Component {
 
         });
 
-        // return;
+        console.log(this.state.repLogs);
+
+        return;
 
         deleteRepLog(id)
             .then(() => {

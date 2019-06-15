@@ -6,6 +6,8 @@ export default class RepLogCreator extends Component {
     constructor(props) {
         super(props);
 
+        const { validationErrorMessage } = this.props;
+
         this.state = {
             quantityInputError: ''
         };
@@ -26,6 +28,8 @@ export default class RepLogCreator extends Component {
 
     handleFormSubmit(event) {
         event.preventDefault();
+
+        // console.log(this.props);
 
         const { onAddRepLog } = this.props;
 
@@ -55,9 +59,15 @@ export default class RepLogCreator extends Component {
 
     render() {
         const { quantityInputError } = this.state;
+        const { validationErrorMessage } = this.props;
 
         return (
             <form onSubmit={this.handleFormSubmit}>
+                { validationErrorMessage && (
+                    <div className="alert alert-danger">
+                        {validationErrorMessage}
+                    </div>
+                )}
                 <div className="form-group">
                     <label className="sr-only control-label required" htmlFor="rep_log_item">
                         What did you lift?
@@ -93,5 +103,6 @@ export default class RepLogCreator extends Component {
 }
 
 RepLogCreator.propTypes = {
-    onAddRepLog: PropTypes.func.isRequired
+    onAddRepLog: PropTypes.func.isRequired,
+    validationErrorMessage: PropTypes.string.isRequired
 };

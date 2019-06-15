@@ -24,7 +24,8 @@ export default function RepLogs(props) {
         onDeleteRepLog,
         isLoaded,
         isSavingNewRepLog,
-        successMessage
+        successMessage,
+        newRepLogValidationErrorMessage
     } = props;
 
     const heartsStyle = {
@@ -83,7 +84,10 @@ export default function RepLogs(props) {
 
             <div className="row">
                 <div className="col-md-6">
-                    <RepLogCreator onAddRepLog={onAddRepLog}/>
+                    <RepLogCreator
+                        onAddRepLog={onAddRepLog}
+                        validationErrorMessage={newRepLogValidationErrorMessage}
+                    />
                 </div>
             </div>
 
@@ -105,5 +109,6 @@ RepLogs.propTypes = {
     isLoaded: PropTypes.bool.isRequired,
     isSavingNewRepLog: PropTypes.bool.isRequired,
     successMessage: PropTypes.string.isRequired,
+    newRepLogValidationErrorMessage: PropTypes.string.isRequired
 
 };

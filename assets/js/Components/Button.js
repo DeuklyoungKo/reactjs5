@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 export default function Button(props) {
     const { className, ...otherProps } = props;
 
+    /*
     console.log(props);
     console.log(className);
     console.log({...otherProps});
+    */
 
     return (
         <button

@@ -38,10 +38,14 @@ Encore
     .configureBabel((babelConfig) => {
 
         if (Encore.isProduction()) {
-            bebelConfig.plugins.push(
+            babelConfig.plugins.push(
                 "transform-react-remove-prop-types"
             )
         }
+
+        babelConfig.plugins.push(
+            "transform-object-rest-spread"
+        )
 
     })
 

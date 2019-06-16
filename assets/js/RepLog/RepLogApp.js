@@ -16,7 +16,16 @@ export default class RepLogApp extends Component {
             isLoaded: false,
             isSavingNewRepLog: false,
             successMessage: '',
-            newRepLogValidationErrorMessage: ''
+            newRepLogValidationErrorMessage: '',
+            // itemOptions:  [
+            //     { id: 'cat', text: 'Cat' },
+            //     { id: 'fat_cat', text: 'Big Fat Cat' },
+            //     { id: 'laptop', text: 'My Laptop' },
+            //     { id: 'coffee_cup', text: 'Coffee Cup' },
+            //     { id: 'invalid_item', text: 'Dark Matter' }
+            // ]
+
+            // itemOptions: props.itemOptions
         };
 
         this.setSuccessMessageTimeoutHandle = 0;
@@ -60,16 +69,21 @@ export default class RepLogApp extends Component {
             isSavingNewRepLog: true
         });
 
+        const newState = {
+            isSavingNewRepLog: false,
+        }
+
         createRepLog(newRep)
             .then(repLog => {
                 this.setState(prevState => {
                     const newRepLogs = [...prevState.repLogs, repLog];
 
                     return {
+                        ...newState,
                         repLogs: newRepLogs,
-                        isSavingNewRepLog: false,
                         newRepLogValidationErrorMessage: ''
                     };
+
                 });
 
                 this.setSuccessMessage('Rep Log Saved!');
@@ -86,9 +100,11 @@ export default class RepLogApp extends Component {
                     // console.log(firstError);
 
                     this.setState({
-                        newRepLogValidationErrorMessage: firstError
-                    })
-                })
+                        ...newState,
+                        newRepLogValidationErrorMessage: firstError,
+                        // isSavingNewRepLog: false,
+                    });
+                });
             });
     }
 
@@ -125,8 +141,8 @@ export default class RepLogApp extends Component {
                         return repLog;
                     }
 
-                    // console.log(Object.assign({}, repLog, {isDeleting: true}));
-                    return Object.assign({}, repLog, {isDeleting: true});
+                    // return Object.assign({}, repLog, {isDeleting: true});
+                    return {...repLog, isDeleting:true};
                 })
             }
 
@@ -168,5 +184,10 @@ export default class RepLogApp extends Component {
 }
 
 RepLogApp.propTypes = {
-    withHeart: PropTypes.bool
+    withHeart: PropTypes.bool,
+    itemOptions: PropTypes.array
+}
+
+RepLogApp.defaultProps = {
+    itemOptions: []
 }

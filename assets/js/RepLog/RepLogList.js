@@ -67,5 +67,6 @@ RepLogList.propTypes = {
     onRowClick: PropTypes.func.isRequired,
     onDeleteRepLog: PropTypes.func.isRequired,
     isLoaded: PropTypes.bool.isRequired,
-    repLogs: PropTypes.array.isRequired
+    repLogs: PropTypes.array.isRequired,
+    isSavingNewRepLog: PropTypes.bool.isRequired
 };
